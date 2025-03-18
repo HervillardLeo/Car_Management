@@ -1,0 +1,16 @@
+<table>
+    <tr>
+        <th>Nom</th>
+        <th>Marque</th>
+        <th>Année</th>
+        <th>Puissance (CV)</th>
+    </tr>
+    {% for car in cars %}
+        <tr>
+            <td>{{ car.modelName }}</td>
+            <td>{{ car.brand }}</td>
+            <td>{{ car.year | date("Y") }}</td>
+            <td>{{ car.power }} ch</td>
+        </tr>
+    {% endfor %}
+</table>

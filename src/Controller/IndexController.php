@@ -48,4 +48,43 @@ final class IndexController extends AbstractController
 
         return new Response("<p>Fichier introuvable : $templatePath</p>", Response::HTTP_NOT_FOUND);
     }
+
+    #[Route('/load-cars', name: 'load_cars', methods: ['POST'])]
+    public function loadCars(Request $request): Response
+    {
+        $client = $request->cookies->get('client_id', 'clienta');
+
+        // Charger les fichiers JSON
+        $carsFile = $this->getParameter('kernel.project_dir') . "/data/cars.json";
+        $garagesFile = $this->getParameter('kernel.project_dir') . "/data/garages.json";
+
+        if (!file_exists($carsFile) || !file_exists($garagesFile)) {
+            return new Response("<p>Fichier JSON introuvable.</p>", Response::HTTP_NOT_FOUND);
+        }
+
+        $carsData = json_decode(file_get_contents($carsFile), true);
+        $garagesData = json_decode(file_get_contents($garagesFile), true);
+
+        // Transformer la liste des garages en un tableau associatif basé sur l'ID
+        $garages = [];
+        foreach ($garagesData as $garage) {
+            $garages[$garage['id']] = $garage; // Associe garageId à son contenu
+        }
+
+        // Filtrer les voitures pour ne garder que celles du client actif
+        $filteredCars = array_filter($carsData, fn($car): bool => $car['customer'] === $client);
+
+        foreach ($filteredCars as &$car) {
+            $car['garage'] = $garages[$car['garageId']]['title'] ?? 'Garage inconnu';
+            $car['year_formatted'] = date('Y', $car['year']);
+        }
+
+        if (empty($filteredCars)) {
+            return new Response("<p>Aucune voiture trouvée pour ce client.</p>", Response::HTTP_NOT_FOUND);
+        }
+
+        return $this->render("customs/$client/modules/cars/list.html.twig", [
+            'cars' => array_values($filteredCars),
+        ]);
+    }
 }

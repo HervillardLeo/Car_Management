@@ -1,0 +1,14 @@
+<table>
+    <tr>
+        <th>Nom</th>
+        <th>Marque</th>
+        <th>Garage</th>
+    </tr>
+    {% for car in cars %}
+        <tr>
+            <td>{{ car.modelName | lower }}</td>
+            <td>{{ car.brand }}</td>
+            <td>{{ car.garage }}</td>
+        </tr>
+    {% endfor %}
+</table>

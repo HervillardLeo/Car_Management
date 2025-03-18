@@ -1,0 +1,18 @@
+<table>
+    <tr>
+        <th>Nom de la voiture</th>
+        <th>Marque</th>
+        <th>Année</th>
+        <th>Puissance (ch)</th>
+        <th>Garage</th>
+    </tr>
+    {% for car in cars %}
+        <tr style="background-color: {{ car.colorHex }};color: white">
+            <td>{{ car.modelName }}</td>
+            <td>{{ car.brand }}</td>
+            <td>{{ car.year_formatted }}</td>
+            <td>{{ car.power }}</td>
+            <td>{{ car.garage }}</td>
+        </tr>
+    {% endfor %}
+</table>
