@@ -1,0 +1,122 @@
+[
+    {
+      "id": 1,
+      "modelName": "Sedan X",
+      "year": 1630454400,
+      "brand": "Brand A",
+      "power": 200,
+      "customer": "clienta",
+      "garageId": 1,
+      "colorHex": "#FF0000"
+    },
+    {
+      "id": 2,
+      "modelName": "SUV Y",
+      "year": 1661990400,
+      "brand": "Brand B",
+      "power": 250,
+      "customer": "clientb",
+      "garageId": 2,
+      "colorHex": "#00FF00"
+    },
+    {
+      "id": 3,
+      "modelName": "Hatchback Z",
+      "year": 1577836800,
+      "brand": "Brand C",
+      "power": 180,
+      "customer": "clientc",
+      "garageId": 3,
+      "colorHex": "#0000FF"
+    },
+    {
+      "id": 4,
+      "modelName": "Convertible A",
+      "year": 1612051200,
+      "brand": "Brand D",
+      "power": 220,
+      "customer": "clienta",
+      "garageId": 1,
+      "colorHex": "#FFA500"
+    },
+    {
+      "id": 5,
+      "modelName": "SUV B",
+      "year": 1643587200,
+      "brand": "Brand E",
+      "power": 270,
+      "customer": "clientb",
+      "garageId": 2,
+      "colorHex": "#800080"
+    },
+    {
+      "id": 6,
+      "modelName": "Hatchback C",
+      "year": 1580515200,
+      "brand": "Brand F",
+      "power": 190,
+      "customer": "clientc",
+      "garageId": 3,
+      "colorHex": "#008000"
+    },
+    {
+      "id": 7,
+      "modelName": "Sedan D",
+      "year": 1625097600,
+      "brand": "Brand G",
+      "power": 205,
+      "customer": "clienta",
+      "garageId": 1,
+      "colorHex": "#FFC0CB"
+    },
+    {
+      "id": 8,
+      "modelName": "Convertible E",
+      "year": 1656633600,
+      "brand": "Brand H",
+      "power": 230,
+      "customer": "clientb",
+      "garageId": 8,
+      "colorHex": "#FFFF00"
+    },
+    {
+      "id": 9,
+      "modelName": "SUV F",
+      "year": 1593561600,
+      "brand": "Brand I",
+      "power": 290,
+      "customer": "clientc",
+      "garageId": 5,
+      "colorHex": "#800000"
+    },
+    {
+      "id": 10,
+      "modelName": "Hatchback G",
+      "year": 1638115200,
+      "brand": "Brand J",
+      "power": 195,
+      "customer": "clienta",
+      "garageId": 1,
+      "colorHex": "#00FFFF"
+    },
+    {
+      "id": 11,
+      "modelName": "Sedan H",
+      "year": 1672204800,
+      "brand": "Brand K",
+      "power": 210,
+      "customer": "clienta",
+      "garageId": 1,
+      "colorHex": "#008080"
+    },
+    {
+      "id": 12,
+      "modelName": "Convertible I",
+      "year": 1617225600,
+      "brand": "Brand L",
+      "power": 235,
+      "customer": "clientb",
+      "garageId": 2,
+      "colorHex": "#FF00FF"
+    }
+]

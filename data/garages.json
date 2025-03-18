@@ -1,0 +1,32 @@
+[
+    {
+      "id": 1,
+      "title": "ABC Garage",
+      "address": "123 Main Street, City A",
+      "customer": "clienta"
+    },
+    {
+      "id": 2,
+      "title": "XYZ Auto Shop",
+      "address": "456 Elm Street, City B",
+      "customer": "clientb"
+    },
+    {
+        "id": 3,
+        "title": "City Motors",
+        "address": "789 Oak Avenue, City C",
+        "customer": "clientc"
+    },
+    {
+        "id": 4,
+        "title": "Sunset Garage",
+        "address": "321 Pine Street, City D",
+        "customer": "clienta"
+    },
+    {
+        "id": 5,
+        "title": "Speedy Auto Repair",
+        "address": "654 Cedar Lane, City E",
+        "customer": "clientc"
+    }
+]
