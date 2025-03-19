@@ -19,6 +19,10 @@ services:
             - '../src/DependencyInjection/'
             - '../src/Entity/'
             - '../src/Kernel.php'
-
+    App\EventListener\CsrfProtectionListener:
+        arguments:
+            $csrfTokenManager: '@security.csrf.token_manager'
+        tags:
+            - { name: kernel.event_subscriber }
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

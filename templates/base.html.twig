@@ -13,6 +13,7 @@
         {% endblock %}
     </head>
     <body>
+        <meta name="csrf-token" content="{{ csrf_token('ajax') }}">
         {% block body %}{% endblock %}
     </body>
 </html>

@@ -29,6 +29,7 @@ async function loadContent() {
         method: "POST",
         headers: {
             "Content-Type": "application/x-www-form-urlencoded",
+            "X-CSRF-Token": $("meta[name='csrf-token']").attr("content")
         },
         body: new URLSearchParams({ module: module, script: script }),
     })
@@ -45,6 +46,7 @@ async function changeClient(clientId) {
         method: "POST",
         headers: {
             "Content-Type": "application/x-www-form-urlencoded",
+            "X-CSRF-Token": $("meta[name='csrf-token']").attr("content")
         },
         body: new URLSearchParams({ client: clientId }),
     });
@@ -55,7 +57,10 @@ async function changeClient(clientId) {
 
 function loadCars() {
     fetch("/load-cars", {
-        method: "POST"
+        method: "POST", 
+        headers: {
+            "X-CSRF-Token": $("meta[name='csrf-token']").attr("content")
+        }
     })
         .then(response => response.text())
         .then(data => {
@@ -92,6 +97,7 @@ function loadGarages() {
         method: "POST",
         headers: {
             "Content-Type": "application/x-www-form-urlencoded",
+            "X-CSRF-Token": $("meta[name='csrf-token']").attr("content")
         },
     })
         .then(response => response.text())
