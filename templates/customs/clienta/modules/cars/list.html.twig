@@ -6,7 +6,7 @@
         <th>Puissance (CV)</th>
     </tr>
     {% for car in cars %}
-        <tr>
+        <tr class="{{car.colorClass}}">
             <td class="click-car" data-car-id="{{ car.id }}"><a href="#">{{ car.modelName }}</a></td>
             <td>{{ car.brand }}</td>
             <td>{{ car.year | date("Y") }}</td>

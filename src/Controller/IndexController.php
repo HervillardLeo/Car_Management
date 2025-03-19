@@ -74,9 +74,17 @@ final class IndexController extends AbstractController
         // Filtrer les voitures pour ne garder que celles du client actif
         $filteredCars = array_filter($carsData, fn($car): bool => $car['customer'] === $client);
 
+        $currentYear = (new \DateTime())->format('Y');
         foreach ($filteredCars as &$car) {
             $car['garage'] = $garages[$car['garageId']]['title'] ?? 'Garage inconnu';
             $car['year_formatted'] = date('Y', $car['year']);
+            $car['colorClass'] = '';
+            $carAge = $currentYear - $car['year_formatted'];
+            if ($carAge > 10 && $client === "clienta") {
+                $car['colorClass'] = 'old-car';
+            } elseif ($carAge < 2 && $client === "clienta") {
+                $car['colorClass'] = 'new-car';
+            } 
         }
 
         if (empty($filteredCars)) {
