@@ -8,7 +8,7 @@
     </tr>
     {% for car in cars %}
         <tr style="background-color: {{ car.colorHex }};color: white">
-            <td>{{ car.modelName }}</td>
+            <td class="click-car" data-car-id="{{ car.id }}"><a href="#">{{ car.modelName }}</a></td>
             <td>{{ car.brand }}</td>
             <td>{{ car.year_formatted }}</td>
             <td>{{ car.power }}</td>

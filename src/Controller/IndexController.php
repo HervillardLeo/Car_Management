@@ -87,4 +87,43 @@ final class IndexController extends AbstractController
             'cars' => array_values($filteredCars),
         ]);
     }
+
+    #[Route('/car-details/{id}', name: 'car_details', methods: ['GET'])]
+    public function carDetails(int $id): Response
+    {
+        $carsFile = $this->getParameter('kernel.project_dir') . "/data/cars.json";
+        if (!file_exists($carsFile)) {
+            return new Response("<p>Fichier JSON introuvable.</p>", Response::HTTP_NOT_FOUND);
+        }
+
+        $carsData = json_decode(file_get_contents($carsFile), true);
+
+        $car = null;
+        foreach ($carsData as $c) {
+            if ($c['id'] === $id) {
+                $car = $c;
+                break;
+            }
+        }
+        if (empty($car)) {
+            return new Response("<p>Voiture non trouvée.</p>", Response::HTTP_NOT_FOUND);
+        }
+        $garagesFile = $this->getParameter('kernel.project_dir') . "/data/garages.json";
+        $garagesData = json_decode(file_get_contents($garagesFile), true);
+
+        $garage = null;
+        foreach ($garagesData as $g) {
+            if ($g['id'] === $car["garageId"]) {
+                $garage = $g;
+                break;
+            }
+        }
+
+        $car["garage"] = $garage["title"] ?? 'Garage inconnu';
+        $car["garageAddress"] = $garage["address"] ?? 'Adresse inconnue';
+
+        return $this->render("cars/edit.html.twig", [
+            'car' => $car,
+        ]);
+    }
 }

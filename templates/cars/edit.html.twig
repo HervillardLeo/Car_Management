@@ -1,0 +1,9 @@
+<h2>Détails de la voiture : {{ car.modelName }}</h2>
+<p><strong>Nom du modèle :</strong> {{ car.modelName }}</p>
+<p><strong>Marque :</strong> {{ car.brand }}</p>
+<p><strong>Année :</strong> {{ car.year | date('Y')}}</p>
+<p><strong>Puissance :</strong> {{ car.power }} chevaux</p>
+<p><strong>Garage :</strong> {{ car.garage }}</p>
+<p><strong>Couleur :</strong> <span style="background-color: {{ car.colorHex }};">{{ car.colorHex }}</span></p>
+<p><strong>Adresse du garage :</strong> {{ car.garageAddress }}</p>
+<button class='goback'>Retour</bouton>
