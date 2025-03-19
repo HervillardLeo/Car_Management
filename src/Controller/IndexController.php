@@ -18,7 +18,7 @@ final class IndexController extends AbstractController
         $client = $request->cookies->get('client_id', 'clienta');
 
         return $this->render('index/index.html.twig', [
-            'client' => $client
+            'client' => $client,
         ]);
     }
 
@@ -124,6 +124,53 @@ final class IndexController extends AbstractController
 
         return $this->render("cars/edit.html.twig", [
             'car' => $car,
+        ]);
+    }
+
+    #[Route('/load-garages', name: 'load_garages', methods: ['POST'])]
+    public function loadGarages(Request $request): Response
+    {
+        $client = $request->cookies->get('client_id');
+
+        if ($client !== 'clientb') {
+            return new Response("<p>Vous n'avez pas accès a ce module.</p>", Response::HTTP_FORBIDDEN);
+        }
+        $garagesData = json_decode(file_get_contents($this->getParameter('kernel.project_dir') . '/data/garages.json'), true);
+
+        // Filtrer uniquement les garages du client B
+        $garages = array_filter($garagesData, fn($garage) => $garage['customer'] === $client);
+
+        if (empty($garages)) {
+            return new Response("<p>Aucun garage trouvé pour ce client.</p>", Response::HTTP_NOT_FOUND);
+        }
+
+        return $this->render("customs/$client/modules/garages/list.html.twig", [
+            'garages' => array_values($garages),
+        ]);
+    }
+
+    #[Route('/garage-details/{id}', name: 'garage_details', methods: ['GET'])]
+    public function garageDetail(int $id): Response
+    {
+        $garagesFile = $this->getParameter('kernel.project_dir') . "/data/garages.json";
+        if (!file_exists($garagesFile)) {
+            return new Response("<p>Fichier JSON introuvable.</p>", Response::HTTP_NOT_FOUND);
+        }
+        $garagesData = json_decode(file_get_contents($garagesFile), true);
+
+        foreach ($garagesData as $g) {
+            if ($g['id'] === $id) {
+                $garage = $g;
+                break;
+            }
+        }
+
+        if (!$garage) {
+            return $this->json(['error' => 'Garage non trouvé'], Response::HTTP_NOT_FOUND);
+        }
+
+        return $this->render("garages/edit.html.twig", [
+            'garage' => $garage,
         ]);
     }
 }

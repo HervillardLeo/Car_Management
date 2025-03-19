@@ -1,0 +1,16 @@
+<table>
+    <thead>
+        <tr>
+            <th>Nom du garage</th>
+            <th>Adresse</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for garage in garages %}
+            <tr>
+                <td class="click-garage" data-garage-id="{{ garage.id }}"><a href="#">{{ garage.title }}</a></td>
+                <td>{{ garage.address }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

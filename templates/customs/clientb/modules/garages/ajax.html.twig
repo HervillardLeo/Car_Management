@@ -1,0 +1,1 @@
+<h1>Garages Client B</h1>

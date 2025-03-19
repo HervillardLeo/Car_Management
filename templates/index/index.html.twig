@@ -9,6 +9,13 @@
         <option value="clientb" {{ client == 'clientb' ? 'selected' : '' }}>Client B</option>
         <option value="clientc" {{ client == 'clientc' ? 'selected' : '' }}>Client C</option>
     </select>
-    
+    <br>
+    <div id="module">
+        <label for="module-selector">Changer de module :</label>
+        <select id="module-selector">
+            <option value="cars">Voitures</option>
+            <option value="garages">Garages</option>
+        </select>
+    </div>
     <div class="dynamic-div" data-module="cars" data-script="ajax"></div>
 {% endblock %}
